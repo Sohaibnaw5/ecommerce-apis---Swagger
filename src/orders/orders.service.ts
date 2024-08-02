@@ -11,7 +11,7 @@ export class OrdersService {
   constructor(private readonly databaseService: DatabaseService) {}
 
 
-  async create(createOrderDto: Prisma.OrderCreateInput) {
+  async create(createOrderDto: CreateOrderDto) {
     const product = await this.databaseService.product.findUnique({
       where: {id: createOrderDto.productId}
     });
@@ -22,7 +22,9 @@ export class OrdersService {
         totalPrice
       }
     })
+    
   }
+  
 
   async findAll() {
     return this.databaseService.order.findMany();

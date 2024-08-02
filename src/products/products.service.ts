@@ -9,7 +9,7 @@ export class ProductsService {
 
   constructor(private readonly databaseService: DatabaseService) {}
 
-  async create(createProductDto: Prisma.ProductCreateInput) {
+  async create(createProductDto: CreateProductDto) {
     return this.databaseService.product.create({data: createProductDto});
   }
 
@@ -25,7 +25,7 @@ export class ProductsService {
     })
   }
 
-  async update(id: number, updateProductDto: Prisma.ProductUpdateInput) {
+  async update(id: number, updateProductDto: UpdateProductDto) {
     return this.databaseService.product.update({
       where: {
         id
