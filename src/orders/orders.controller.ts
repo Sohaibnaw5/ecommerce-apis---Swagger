@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Put, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { OrdersService } from './orders.service';
 import { CreateOrderDto } from './dto/create-order.dto';
 import  {UpdateOrderDto} from './dto/update-order.dto'
@@ -33,7 +33,7 @@ export class OrdersController {
     return this.ordersService.findOne(+id);
   }
 
-  @Put(':id')
+  @Patch(':id')
   @ApiOperation({ summary: 'Update an order by ID' })
   @ApiResponse({ status: 200, description: 'The order has been successfully updated.', type: Order })
   @ApiResponse({ status: 404, description: 'Order not found.' })
